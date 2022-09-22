@@ -222,6 +222,9 @@ class KanbanController < ApplicationController
         if @tracker_id != "unspecified" then
           issues = issues.where(tracker_id: @tracker_id)
         end
+        
+        issues= issues.joins(:custom_values).where("custom_field_id = 12 and value=1")
+
         @issues_hash[status_id] = issues.order(updated_on: "DESC").limit(Constants::SELECT_LIMIT)
         # Count WIP issues
         if status_id == Constants::WIP_COUNT_STATUS_FIELD then
