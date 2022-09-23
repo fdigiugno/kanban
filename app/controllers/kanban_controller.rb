@@ -119,7 +119,7 @@ class KanbanController < ApplicationController
     # Get the sprints 
     cf = CustomField.where(name:'Sprint').first
     Rails.logger.info 'My logged message'
-    Rails.logger.info simple_format cf.to_yaml
+    Rails.logger.info cf.to_yaml
     @sprints = cf.possible_values
 
 
