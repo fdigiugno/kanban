@@ -31,6 +31,20 @@
   <legend class="icon icon-collapsed" onclick="toggleFieldset(this);"><%= I18n.t(:label_filter_plural) %></legend>
   <div style="display: none;">
     <table>
+    <tr>
+      <!-- Sprint -->
+      <td style="width: 100px">
+        <label><%= I18n.t(:kanban_label_sprint) %></label>
+      </td>
+      <td>
+        <select name="sprint_id" id="sprint_id">
+          <option value="unspecified" <% if @sprint_id == "unspecified" then %> selected <% end %>><%= I18n.t(:kanban_label_unspecified) %></option>
+          <% @sprints.each{|sprint| %>
+            <option value="<%= sprint.id %>" <% if @sprint_id.to_i == sprint.id then %> selected <% end %>><%= sprint.value %></option>
+          <% } %>
+        </select>
+      </td>
+    </tr>
       <tr>
         <td style="width: 100px">
           <label><%= I18n.t(:field_updated_on) %></label>

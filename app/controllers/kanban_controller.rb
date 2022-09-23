@@ -116,6 +116,12 @@ class KanbanController < ApplicationController
       @user_and_group_names_hash[group.id] = group.name
     }
 
+    # Get the sprints 
+    cf = CustomField.where('name', 'Sprint').first
+
+    @sprints = cf.possible_values
+
+
     # Get all status orderby position
     @issue_statuses = IssueStatus.all.order("position ASC")
     @issue_statuses_hash = {}
