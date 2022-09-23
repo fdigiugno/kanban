@@ -219,9 +219,9 @@ class KanbanController < ApplicationController
       .where(is_private: 0)
 
       if @done_issue_statuses_array.include?(status_id) == false then
-        issues = issues..where("updated_on >= '" + updated_from + "'")
+        issues = issues.where("updated_on >= '" + updated_from + "'")
       else
-        issues = issues..where("updated_on >= '" + closed_from + "'")
+        issues = issues.where("updated_on >= '" + closed_from + "'")
       end
       if @version_id != "unspecified" then
         issues = issues.where(fixed_version_id: @version_id)
