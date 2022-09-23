@@ -37,7 +37,7 @@ class KanbanController < ApplicationController
       @project = Project.find(@project_id)
     end
     
-    # Get users for assignee filetr
+    # Get users for assignee filter
     if @project_all == "1" then
       @selectable_users = User.where(type: "User").where(status: 1)
     else
