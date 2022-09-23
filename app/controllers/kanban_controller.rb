@@ -117,7 +117,7 @@ class KanbanController < ApplicationController
     }
 
     # Get the sprints 
-    cf = CustomField.where("name='Sprint'").first
+    cf = CustomField.where(name:'Sprint').first
 
     @sprints = cf.possible_values
 
