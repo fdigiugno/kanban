@@ -1,8 +1,6 @@
 <div id="issue-<%= issue.id %>" class="hascontextmenu created-by-me context-menu-selection
-    <!-- Card color by priority -->
     <% if issue.priority_id >= Constants::DEFAULT_HIGH_PRIORITY_ISSUE_ID then %> my-issue-card-high-priority <% elsif issue.priority_id == Constants::DEFAULT_NORMAL_PRIORITY_ISSUE_ID %> my-issue-card <% else %> my-issue-card-low-priority <% end %>"
-    <!-- Border color by planned -->
-    <% if issue.fixed_version_id != 77 && issue.status_id!=1 && issue.tracker_id==1 then %> style="border-color:orange" <% elsif  issue.fixed_version_id != 77 && issue.status_id!=1  %> style="border-color:red"
+    <% if issue.fixed_version_id != 77 && issue.status_id!=1 && issue.tracker_id==1 then %> style="border-color:orange" <% elsif  issue.fixed_version_id != 77 && issue.status_id!=1  %> style="border-color:red" <% end %>
     >
     <div style="float: right; font-size: smaller"><%= issue.project.name %></div>
     <p><input type="checkbox" name="ids[]" value="<%= issue.id %>"> <%= issue.tracker.name %> #<%= issue.id %></p>
