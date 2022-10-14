@@ -1,7 +1,7 @@
 /* Normal priority issue */
 .my-issue-card {
   padding: 5px;
-  border: solid 1px #d5d5d5;
+  border: solid 2px #d5d5d5;
   background-color: #ffffdd;
   margin: 8px 4px 8px 4px;
   word-wrap: break-word;
@@ -15,7 +15,7 @@
 /* High priority issue */
 .my-issue-card-high-priority {
   padding: 5px;
-  border: solid 1px #d5d5d5;
+  border: solid 2px #d5d5d5;
   /* background-color: #ffafaf; */
   background-color: #FFD4D4;
   margin: 8px 4px 8px 4px;
@@ -30,7 +30,7 @@
 /* Low priority issue */
 .my-issue-card-low-priority {
   padding: 5px;
-  border: solid 1px #d5d5d5;
+  border: solid 2px #d5d5d5;
   background-color: #EAF7FF;
   margin: 8px 4px 8px 4px;
   word-wrap: break-word;
