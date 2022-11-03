@@ -349,22 +349,6 @@ hotkeys('o,e,k,d+u,d+o,d+t,d+w,n,s,h,l,p', function(event,handler) {
         case "d+w":
             $('#due_date').val("thisweek");
             break;
-        // card_size == normal_days_left
-        case "n":
-            $('#card_size').val("normal_days_left");
-            break;
-        // card_size == normal_estimated_hours
-        case "k":
-            $('#card_size').val("normal_estimated_hours");
-            break;
-        // card_size == normal_spent_hours
-        case "p":
-            $('#card_size').val("normal_spent_hours");
-            break;
-        // card_size == small
-        case "s":
-            $('#card_size').val("small");
-            break;
         // show this
         case "h":
             $('#keyboard-chortcut-dialog').dialog('open');

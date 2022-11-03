@@ -170,19 +170,6 @@
           </select>
         </td>
       </tr>
-      <tr>
-        <td style="width: 100px">
-          <label><%= I18n.t(:kanban_label_card_size) %></label>
-        </td>
-        <td>
-          <select name="card_size" id="card_size">
-            <option value="normal_days_left" <% if @card_size == "normal_days_left" then %> selected <% end %>><%= I18n.t(:kanban_label_card_size_normal_days_left) %></option>
-            <option value="normal_estimated_hours" <% if @card_size == "normal_estimated_hours" then %> selected <% end %>><%= I18n.t(:kanban_label_card_size_normal_estimated_hours) %></option>
-            <option value="normal_spent_hours" <% if @card_size == "normal_spent_hours" then %> selected <% end %>><%= I18n.t(:kanban_label_card_size_normal_spent_hours) %></option>
-            <option value="small" <% if @card_size == "small" then %> selected <% end %>><%= I18n.t(:kanban_label_card_size_small) %></option>
-          </select>
-        </td>
-      </tr>
       <tr>  
         <td style="width: 100px">
           <label><%= I18n.t(:kanban_label_show_ancestors) %></label>
@@ -280,19 +267,8 @@
               <% end %>
               <% @issues_hash[status_id].each {|issue| %>
                 <% if uid == issue.assigned_to_id then %>
-                  <% if @card_size == "small" then %>
-                    <!-- SMALL SIZE card -->
-                      <%= render partial: 'kanban/small_card', locals: { issue: issue } %>
-                  <% elsif @card_size == "normal_days_left" then %>
-                    <!-- NORMAL SIZE card display with days left -->
-                      <%= render partial: 'kanban/normal_card_days_left', locals: { issue: issue } %>
-                  <% elsif @card_size == "normal_estimated_hours" then %>
-                    <!-- NORMAL SIZE card display with estimated hours -->
-                      <%= render partial: 'kanban/normal_card_estimated_hours', locals: { issue: issue } %>
-                  <% else %>
-                    <!-- NORMAL SIZE card display with spent hours -->
-                      <%= render partial: 'kanban/normal_card_spent_hours', locals: { issue: issue } %>
-                  <% end %>
+                  <!-- NORMAL SIZE card display with spent hours -->
+                  <%= render partial: 'kanban/normal_card_spent_hours', locals: { issue: issue } %>
                 <% end %>
               <% } %>
             </td>
