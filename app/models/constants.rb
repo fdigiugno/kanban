@@ -77,4 +77,10 @@ class Constants < ActiveRecord::Base
   # 0: Not display
   # 1: Display
   DEFAULT_SHOW_ANCESTORS = "1"
+  # Issue identifier for Bugs
+  BUG_TRACKER_ID = 1
+  # Identifier for "New" status
+  ISSUE_NEW_STATUS_ID = 1
+  # Planned version
+  CURRENT_VERSION_ID = 77
 end
