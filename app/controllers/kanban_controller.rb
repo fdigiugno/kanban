@@ -296,7 +296,7 @@ class KanbanController < ApplicationController
     session_hash["project_all"] = @project_all
     session_hash["version_id"] = @version_id
     session_hash["open_versions"] = @open_versions
-    session_hash["status_fields"] = @status_fields
+    #session_hash["status_fields"] = @status_fields
     session_hash["wip_max"] = @wip_max
     session_hash["card_size"] = @card_size
     session_hash["show_ancestors"] = @show_ancestors
@@ -373,13 +373,13 @@ class KanbanController < ApplicationController
     end
 
     # Selected statuses
-    if !session_hash.blank? && params[:status_fields].blank?
-      @status_fields = session_hash["status_fields"]
-    else
-      @status_fields = params[:status_fields]
-    end
+    # if !session_hash.blank? && params[:status_fields].blank?
+    #  @status_fields = session_hash["status_fields"]
+    #else
+    @status_fields = params[:status_fields]
+    #end
 
-    logger.info @status_fields
+    #logger.info @status_fields
 
     # Max number of WIP issue
     if !session_hash.blank? && params[:wip_max].blank?
