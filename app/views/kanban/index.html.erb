@@ -4,30 +4,14 @@
   var label_recent_history_is_here = "<%= I18n.t(:kanban_label_recent_history_is_here) %>";
   var label_add_notes = "<%= I18n.t(:kanban_label_add_notes) %>";
   var option_display_comment_dialog_when_drop = "<%= Constants::DISPLAY_COMMENT_DIALOG_WHEN_DROP %>";
-  window.addEventListener('load', function() {
-    const main = document.getElementById('main');
-    const sidebar = document.getElementById('sidebar');
-    const content = document.getElementById('content');
-
-    
-    const sidebarWidth = sidebar.offsetWidth;
-    content.style.marginLeft = `${sidebarWidth + 10}px`; 
-
-    $('#kanban_table').floatThead('reflow');
-    const containerWidth = $('#container').outerWidth();
-    console.log ("ContainerWidth " + containerWidth);
-    $('.floatThead-container').css('width', containerWidth + 'px');
-
-    $(window).scrollTop(<%= params[:scroll_top] %>);
+  window.onload = function(){    
+    $(window).scrollTop(<%= params[:scroll_top] %>);    
   }
 </script>
-<% if Redmine::VERSION::MAJOR < 4 || (Redmine::VERSION::MAJOR == 4 && Redmine::VERSION::MINOR == 1) %>
-<script src="./javascripts/context_menu.js"></script>
-<link rel="stylesheet" media="screen" href="./stylesheets/context_menu.css">
-<% else %>
+
 <%= stylesheet_link_tag 'context_menu' %>
 <%= javascript_include_tag 'context_menu' %>
-<% end %>
+
 
 <%= javascript_include_tag "jquery.floatThead", :plugin => "kanban" %>
 <%= javascript_include_tag "hotkeys", :plugin => "kanban" %>
