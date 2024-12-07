@@ -462,17 +462,17 @@ class KanbanController < ApplicationController
     end
 
     # Array of status ID for display
-    @status_fields_array = []
-    if !@status_fields.blank? then
-      @status_fields.each {|id,chk|
-        if chk == "1"
-          @status_fields_array << id.to_i
-        end
-      }
-    else
+    #@status_fields_array = []
+    #if !@status_fields.blank? then
+    #  @status_fields.each {|id,chk|
+    #    if chk == "1"
+    #      @status_fields_array << id.to_i
+    #    end
+    #  }
+    #else
       # Default
       @status_fields_array = Constants::DEFAULT_STATUS_FIELD_VALUE_ARRAY
-    end
+    #end
 
     # Max number of WIP issue (default)
     if @wip_max.nil? || @wip_max.to_i == 0 then
