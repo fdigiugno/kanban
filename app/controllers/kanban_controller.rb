@@ -379,6 +379,8 @@ class KanbanController < ApplicationController
       @status_fields = params[:status_fields]
     end
 
+    logger.info @status_fields
+
     # Max number of WIP issue
     if !session_hash.blank? && params[:wip_max].blank?
       @wip_max = session_hash["wip_max"]
