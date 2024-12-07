@@ -1,5 +1,7 @@
 class KanbanController < ApplicationController
-  unloadable
+  if Redmine::VERSION::MAJOR < 4 || (Redmine::VERSION::MAJOR == 4 && Redmine::VERSION::MINOR < 1)
+    unloadable
+  end
   before_action :global_authorize
   #
   # Display kanban board
