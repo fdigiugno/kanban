@@ -8,12 +8,18 @@
     $(window).scrollTop(<%= params[:scroll_top] %>);
   }
 </script>
+<% if Redmine::VERSION::MAJOR < 4 || (Redmine::VERSION::MAJOR == 4 && Redmine::VERSION::MINOR == 1) %>
 <script src="./javascripts/context_menu.js"></script>
+<link rel="stylesheet" media="screen" href="./stylesheets/context_menu.css">
+<% else %>
+<%= stylesheet_link_tag '/context_menu.css' %>
+<%= javascript_include_tag '/context_menu.js' %>
+<% end %>
+
 <%= javascript_include_tag "jquery.floatThead", :plugin => "kanban" %>
 <%= javascript_include_tag "hotkeys", :plugin => "kanban" %>
 <%= javascript_include_tag "kanban", :plugin => "kanban" %>
 <!-- CSS -->
-<link rel="stylesheet" media="screen" href="./stylesheets/context_menu.css">
 <%= stylesheet_link_tag 'kanban', :plugin => 'kanban' %>
 <div class="contextual">
   <% if @project_id.blank? != true then %>
