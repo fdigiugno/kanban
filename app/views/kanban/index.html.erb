@@ -15,6 +15,7 @@
 
     $('#kanban_table').floatThead('reflow');
     const containerWidth = $('#container').outerWidth();
+    console.log ("ContainerWidth " + containerWidth);
     $('.floatThead-container').css('width', containerWidth + 'px');
 
     $(window).scrollTop(<%= params[:scroll_top] %>);
