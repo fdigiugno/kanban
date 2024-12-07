@@ -186,6 +186,8 @@ class KanbanController < ApplicationController
       issues_for_projects = issues_for_projects.limit(Constants::SELECT_LIMIT)
     end
 
+    logger.info "KanbanController: issues retrieved"
+
     # Unique project IDs
     unique_project_id_array = []
     if @project_all == "1" then
@@ -279,6 +281,9 @@ class KanbanController < ApplicationController
   # Store session
   #
   def store_params_to_session
+
+    logger.info "KanbanController: store_params_to_session"
+
     session_hash = {}
     session_hash["updated_within"] = @updated_within
     session_hash["done_within"] = @done_within
@@ -286,6 +291,7 @@ class KanbanController < ApplicationController
     session_hash["tracker_id"] = @tracker_id
     session_hash["user_id"] = @user_id
     session_hash["group_id"] = @group_id
+    logger.info "KanbanController: store_params_to_session-> group_id"
     session_hash["project_all"] = @project_all
     session_hash["version_id"] = @version_id
     session_hash["open_versions"] = @open_versions
