@@ -14,6 +14,8 @@
     content.style.marginLeft = `${sidebarWidth + 10}px`; 
 
     $('#kanban_table').floatThead('reflow');
+    const containerWidth = $('#container').outerWidth();
+    $('.floatThead-container').css('width', containerWidth + 'px');
 
     $(window).scrollTop(<%= params[:scroll_top] %>);
   }

@@ -131,3 +131,7 @@
 .context-menu-selection p { 
   color:rgb(184, 224, 244);
 }
+
+.floatThead-container {
+  transform: none !important;
+}
