@@ -12,6 +12,9 @@
     
     const sidebarWidth = sidebar.offsetWidth;
     content.style.marginLeft = `${sidebarWidth + 10}px`; 
+
+    $('#kanban_table').floatThead('reflow');
+
     $(window).scrollTop(<%= params[:scroll_top] %>);
   }
 </script>
