@@ -266,6 +266,7 @@ class KanbanController < ApplicationController
     if Constants::DISPLAY_USER_WITHOUT_ISSUES != 1 then
       remove_user_without_issues
     end
+    logger.info "End index"
   end
   
   private
