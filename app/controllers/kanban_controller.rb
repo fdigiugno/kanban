@@ -283,8 +283,6 @@ class KanbanController < ApplicationController
   #
   def store_params_to_session
 
-    logger.info "KanbanController: store_params_to_session"
-
     session_hash = {}
     session_hash["updated_within"] = @updated_within
     session_hash["done_within"] = @done_within
@@ -292,11 +290,10 @@ class KanbanController < ApplicationController
     session_hash["tracker_id"] = @tracker_id
     session_hash["user_id"] = @user_id
     session_hash["group_id"] = @group_id
-    logger.info "KanbanController: store_params_to_session-> group_id"
     session_hash["project_all"] = @project_all
     session_hash["version_id"] = @version_id
     session_hash["open_versions"] = @open_versions
-    #session_hash["status_fields"] = @status_fields
+    session_hash["status_fields"] = @status_fields.to_json
     session_hash["wip_max"] = @wip_max
     session_hash["card_size"] = @card_size
     session_hash["show_ancestors"] = @show_ancestors
@@ -373,13 +370,15 @@ class KanbanController < ApplicationController
     end
 
     # Selected statuses
-    # if !session_hash.blank? && params[:status_fields].blank?
-    #  @status_fields = session_hash["status_fields"]
-    #else
-    @status_fields = params[:status_fields]
-    #end
-
-    #logger.info @status_fields
+    if !session_hash.blank? && params[:status_fields].blank?
+      if !session_hash["status_fields"].blank?
+        @status_fields = JSON.parse( session_hash["status_fields"])
+      else
+        @status_fields = ""
+      end
+    else
+      @status_fields = params[:status_fields]
+    end
 
     # Max number of WIP issue
     if !session_hash.blank? && params[:wip_max].blank?
@@ -462,17 +461,17 @@ class KanbanController < ApplicationController
     end
 
     # Array of status ID for display
-    #@status_fields_array = []
-    #if !@status_fields.blank? then
-    #  @status_fields.each {|id,chk|
-    #    if chk == "1"
-    #      @status_fields_array << id.to_i
-    #    end
-    #  }
-    #else
+    @status_fields_array = []
+    if !@status_fields.blank? then
+      @status_fields.each {|id,chk|
+        if chk == "1"
+          @status_fields_array << id.to_i
+        end
+      }
+    else
       # Default
       @status_fields_array = Constants::DEFAULT_STATUS_FIELD_VALUE_ARRAY
-    #end
+    end
 
     # Max number of WIP issue (default)
     if @wip_max.nil? || @wip_max.to_i == 0 then
